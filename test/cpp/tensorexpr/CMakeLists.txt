@@ -54,7 +54,7 @@ target_include_directories(tutorial_tensorexpr PRIVATE ${ATen_CPU_INCLUDE})
 # pthreadpool header. For some build environment we need add the dependency
 # explicitly.
 if(USE_PTHREADPOOL)
-  target_link_libraries(test_tensorexpr PRIVATE pthreadpool_interface)
+  target_link_libraries(test_tensorexpr PRIVATE pthreadpool)
 endif()
 if(USE_CUDA)
   target_link_libraries(test_tensorexpr PRIVATE

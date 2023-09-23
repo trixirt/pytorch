@@ -84,7 +84,7 @@ set(TORCH_PYTHON_LINK_LIBRARIES
     python::python
     pybind::pybind11
     shm
-    fmt::fmt-header-only
+    fmt
     ATEN_CPU_FILES_GEN_LIB)
 
 if(USE_ASAN AND TARGET Sanitizer::address)
