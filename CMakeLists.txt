@@ -682,7 +682,7 @@ set(CAFFE2_ALLOWLIST "" CACHE STRING "A allowlist file of files that one should 
 # Set default build type
 if(NOT CMAKE_BUILD_TYPE)
     message(STATUS "Build type not set - defaulting to Release")
-    set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build from: Debug Release RelWithDebInfo MinSizeRel Coverage." FORCE)
+    set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Choose the type of build from: Debug Release RelWithDebInfo MinSizeRel Coverage." FORCE)
 endif()
 
 # The below means we are cross compiling for arm64 or x86_64 on MacOSX
@@ -917,8 +917,8 @@ if(NOT MSVC)
   string(APPEND CMAKE_LINKER_FLAGS_DEBUG " -fno-omit-frame-pointer -O0")
   append_cxx_flag_if_supported("-fno-math-errno" CMAKE_CXX_FLAGS)
   append_cxx_flag_if_supported("-fno-trapping-math" CMAKE_CXX_FLAGS)
-  append_cxx_flag_if_supported("-Werror=format" CMAKE_CXX_FLAGS)
-  append_cxx_flag_if_supported("-Werror=cast-function-type" CMAKE_CXX_FLAGS)
+#  append_cxx_flag_if_supported("-Werror=format" CMAKE_CXX_FLAGS)
+#  append_cxx_flag_if_supported("-Werror=cast-function-type" CMAKE_CXX_FLAGS)
 else()
   # skip unwanted includes from windows.h
   add_compile_definitions(WIN32_LEAN_AND_MEAN)

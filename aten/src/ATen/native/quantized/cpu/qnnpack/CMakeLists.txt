@@ -393,10 +393,7 @@ elseif(NOT TARGET fxdiv AND USE_SYSTEM_FXDIV)
   if(NOT FXDIV_HDR)
     message(FATAL_ERROR "Cannot find fxdiv")
   endif()
-  add_library(fxdiv STATIC "${FXDIV_HDR}")
-  set_property(TARGET fxdiv PROPERTY LINKER_LANGUAGE C)
 endif()
-target_link_libraries(pytorch_qnnpack PRIVATE fxdiv)
 
 # ---[ Configure psimd
 if(NOT TARGET psimd AND NOT USE_SYSTEM_PSIMD)
