@@ -340,7 +340,7 @@ option(USE_TBB "Use TBB (Deprecated)" OFF)
 cmake_dependent_option(
     USE_SYSTEM_TBB "Use system-provided Intel TBB." OFF "USE_TBB" OFF)
 option(ONNX_ML "Enable traditional ONNX ML API." ON)
-option(HAVE_SOVERSION "Whether to add SOVERSION to the shared objects" OFF)
+option(HAVE_SOVERSION "Whether to add SOVERSION to the shared objects" ON)
 option(BUILD_LIBTORCH_CPU_WITH_DEBUG "Enable RelWithDebInfo for libtorch_cpu target only" OFF)
 cmake_dependent_option(USE_CCACHE "Attempt using CCache to wrap the compilation" ON "UNIX" OFF)
 option(WERROR "Build with -Werror supported by the compiler" OFF)
