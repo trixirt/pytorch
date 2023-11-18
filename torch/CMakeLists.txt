@@ -312,6 +312,9 @@ add_dependencies(torch_python torch_python_stubs)
 add_dependencies(torch_python flatbuffers)
 
 
+# Unresolved syms in -lpython
+target_link_libraries(torch_python PUBLIC ${PYTHON_LIBRARIES})
+
 if(USE_PRECOMPILED_HEADERS)
   target_precompile_headers(torch_python PRIVATE
       "$<$<COMPILE_LANGUAGE:CXX>:ATen/ATen.h>")
