@@ -70,6 +70,7 @@ add_executable(torch_shm_manager manager.cpp)
 target_link_libraries(torch_shm_manager PRIVATE shm)
 set_target_properties(torch_shm_manager PROPERTIES
   INSTALL_RPATH "${_rpath_portable_origin}/../lib")
+target_link_options(torch_shm_manager PRIVATE "-Wl,-pie")
 
 install(TARGETS shm LIBRARY DESTINATION ${LIBSHM_INSTALL_LIB_SUBDIR})
 install(FILES libshm.h DESTINATION "include")
