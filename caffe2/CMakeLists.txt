@@ -914,6 +914,10 @@ if(HAVE_SOVERSION)
       VERSION ${TORCH_VERSION} SOVERSION ${TORCH_SOVERSION})
 endif()
 
+# Disable global as-needed
+set_target_properties(torch PROPERTIES LINK_FLAGS -Wl,--no-as-needed)
+
+
 if(USE_ROCM)
   filter_list(__caffe2_hip_srcs_cpp Caffe2_HIP_SRCS "\\.(cu|hip)$")
   set_source_files_properties(${__caffe2_hip_srcs_cpp} PROPERTIES HIP_SOURCE_PROPERTY_FORMAT 1)
