@@ -963,7 +963,7 @@ def CppExtension(name, sources, *args, **kwargs):
 
     libraries = kwargs.get('libraries', [])
     libraries.append('c10')
-    libraries.append('torch')
+    # libraries.append('torch')
     libraries.append('torch_cpu')
     libraries.append('torch_python')
     kwargs['libraries'] = libraries
