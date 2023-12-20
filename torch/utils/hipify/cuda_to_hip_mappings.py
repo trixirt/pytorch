@@ -57,6 +57,18 @@ if os.path.isfile(rocm_version_h):
         if match:
             patch = int(match.group(1))
     rocm_version = (major, minor, patch)
+else:
+    try:
+        hip_version = subprocess.check_output(["hipconfig", "--version"]).decode("utf-8")
+        hip_split = hip_version.split('.')
+        rocm_version = (int(hip_split[0]), int(hip_split[1]), 0)
+    except subprocess.CalledProcessError:
+        print(f"Warning: hipconfig --version failed")
+    except (FileNotFoundError, PermissionError, NotADirectoryError):
+        # Do not print warning. This is okay. This file can also be imported for non-ROCm builds.
+        pass
+
+
 
 # List of math functions that should be replaced inside device code only.
 MATH_TRANSPILATIONS = collections.OrderedDict(
