@@ -200,6 +200,7 @@ cmake_dependent_option(
     BUILD_NVFUSER "Build NVFUSER" ON
     "USE_CUDA OR USE_ROCM" OFF)
 cmake_dependent_option(USE_ROCM "Use ROCm" ON "LINUX" OFF)
+cmake_dependent_option(USE_SYSTEM_ROCM "Use System ROCm" OFF "USE_ROCM" ON)
 option(CAFFE2_STATIC_LINK_CUDA "Statically link CUDA libraries" OFF)
 cmake_dependent_option(
     USE_CUDNN "Use cuDNN" ON
