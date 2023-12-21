@@ -42,6 +42,7 @@ def get_tag(pytorch_root: Union[str, Path]) -> str:
 def get_torch_version(sha: Optional[str] = None) -> str:
     pytorch_root = Path(__file__).parent.parent
     version = open(pytorch_root / "version.txt").read().strip()
+    return version
 
     if os.getenv("PYTORCH_BUILD_VERSION"):
         assert os.getenv("PYTORCH_BUILD_NUMBER") is not None
