@@ -134,8 +134,13 @@ nvrtcResult nvrtcCreateProgram(nvrtcProgram *prog,
                                const char *src,
                                const char *name,
                                int numHeaders,
+#if !defined(USE_ROCM)
                                const char * const *headers,
                                const char * const *includeNames) {
+#else
+                               const char **headers,
+			       const char **includeNames) {
+#endif
   auto fn = reinterpret_cast<decltype(&nvrtcCreateProgram)>(getNVRTCLibrary().sym(__func__));
   if (!fn)
     throw std::runtime_error("Can't get nvrtcCreateProgram");
@@ -150,7 +155,11 @@ NVRTC_STUB2(nvrtcGetPTX, nvrtcProgram, char *);
 NVRTC_STUB2(nvrtcGetCUBINSize, nvrtcProgram, size_t *);
 NVRTC_STUB2(nvrtcGetCUBIN, nvrtcProgram, char *);
 #endif
+#if !defined(USE_ROCM)
 NVRTC_STUB3(nvrtcCompileProgram, nvrtcProgram, int, const char * const *);
+#else
+NVRTC_STUB3(nvrtcCompileProgram, nvrtcProgram, int, const char **);
+#endif
 _STUB_1(NVRTC, nvrtcGetErrorString, const char *, nvrtcResult);
 NVRTC_STUB2(nvrtcGetProgramLogSize,nvrtcProgram, size_t*);
 NVRTC_STUB2(nvrtcGetProgramLog, nvrtcProgram, char *);
