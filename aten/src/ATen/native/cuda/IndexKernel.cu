@@ -249,7 +249,7 @@ void index_put_kernel_quantized_cuda(TensorIterator& iter, const IntArrayRef ind
 
     gpu_index_kernel(iter, index_size, index_stride, [inv_scale, zero_point, qmin, qmax]C10_DEVICE(char* const out_data, const char* const in_data, const int64_t offset) {
       int64_t qvalue = static_cast<int64_t>(zero_point + nearbyintf(*(float*)in_data * inv_scale));
-      qvalue = std::clamp(qvalue, qmin, qmax);
+      //qvalue = std::clamp(qvalue, qmin, qmax);
       *(scalar_t*)(out_data + offset) = static_cast<scalar_t>(qvalue);
     });
   });
